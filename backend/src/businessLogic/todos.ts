@@ -2,11 +2,11 @@ import { TodoItem } from '../models/TodoItem'
 import { CreateTodoRequest } from '../requests/CreateTodoRequest'
 import { createLogger } from '../utils/logger'
 import * as uuid from 'uuid'
-import { createTodoItem, deleteTodoItem, getTodoItemsByUser, updateAttachmentInTodoItem, updateTodoItem } from './todosAcess'
+import { createTodoItem, deleteTodoItem, getTodoItemsByUser, updateAttachmentInTodoItem, updateTodoItem } from '../dataLayer/todosAcess'
 import CustomError from '../utils/failure';
 import { UpdateTodoRequest } from '../requests/UpdateTodoRequest'
 import { TodoUpdate } from '../models/TodoUpdate'
-import { getAttachmentUrl, getUploadUrl } from './attachmentUtils'
+import { getAttachmentUrl, getUploadUrl } from '../helpers/attachmentUtils'
 
 const logger = createLogger('businessLogic-todos')
 

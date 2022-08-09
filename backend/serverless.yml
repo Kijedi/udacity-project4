@@ -7,6 +7,8 @@ plugins:
   - serverless-webpack
   - serverless-iam-roles-per-function
   - serverless-plugin-tracing
+  - serverless-reqvalidator-plugin
+  - serverless-aws-documentation
 
 provider:
   name: aws
@@ -83,6 +85,11 @@ functions:
           request:
             schemas:
               application/json: ${file(models/create-todo-model.json)}
+          documentation:
+            summary: "Create a todo item"
+            description: "Creating a todo item"
+            requestModels:
+              "application/json": CreateTodoRequest
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -97,6 +104,14 @@ functions:
       - http:
           method: patch
           path: todos/{todoId}
+          request:
+            schemas:
+              application/json: ${file(models/update-todo-model.json)}
+          documentation:
+            summary: "Update a todo item"
+            description: "Updating a todo item"
+            requestModels:
+              "application/json": UpdateTodoRequest
     iamRoleStatements:
       - Effect: Allow
         Action:
